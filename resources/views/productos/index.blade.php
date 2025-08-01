@@ -2,11 +2,17 @@
 
 @section('content')
 <div class="container py-4">
-  <h1 class="mb-4">Listado de Productos</h1>
-
-  <a href="{{ route('productos.create') }}" class="btn btn-primary mb-3">
-    <i class="bi bi-plus-lg"></i> Crear Producto
-  </a>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Listado de Productos</h1>
+    <div>
+      <a href="{{ route('productos.create') }}" class="btn btn-primary me-2">
+        <i class="bi bi-plus-lg"></i> Crear Producto
+      </a>
+      <a href="{{ route('productos.pdf') }}" class="btn btn-secondary">
+        <i class="bi bi-file-earmark-pdf"></i> Descargar PDF
+      </a>
+    </div>
+  </div>
 
   <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
@@ -14,7 +20,7 @@
         <tr>
           <th>ID</th>
           <th>Nombre</th>
-          <th>Precio</th>
+          <th>Precio (Q)</th>
           <th>Imagen</th>
           <th>Acciones</th>
         </tr>
@@ -24,11 +30,11 @@
         <tr>
           <td>{{ $producto->id }}</td>
           <td>{{ $producto->nombre }}</td>
-          <td>Q{{ number_format($producto->precio,2) }}</td>
+          <td>Q{{ number_format($producto->precio, 2) }}</td>
           <td>
             @if($producto->imagen)
               <img
-                src="{{ asset('storage/'.$producto->imagen) }}"
+                src="{{ asset('storage/' . $producto->imagen) }}"
                 alt="{{ $producto->nombre }}"
                 class="img-thumbnail"
                 style="max-height:50px;"
@@ -36,20 +42,21 @@
             @endif
           </td>
           <td>
-            <a href="{{ route('productos.show',$producto) }}" class="btn btn-sm btn-info">
+            <a href="{{ route('productos.show', $producto) }}" class="btn btn-sm btn-info">
               Ver
             </a>
-            <a href="{{ route('productos.edit',$producto) }}" class="btn btn-sm btn-warning">
+            <a href="{{ route('productos.edit', $producto) }}" class="btn btn-sm btn-warning">
               Editar
             </a>
             <form
-              action="{{ route('productos.destroy',$producto) }}"
+              action="{{ route('productos.destroy', $producto) }}"
               method="POST"
               class="d-inline"
               onsubmit="return confirm('¿Eliminar este producto?');"
             >
-              @csrf @method('DELETE')
-              <button class="btn btn-sm btn-danger">Eliminar</button>
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
             </form>
           </td>
         </tr>
@@ -58,6 +65,8 @@
     </table>
   </div>
 
-  {{ $productos->links() }}
+  <div class="d-flex justify-content-center">
+    {{ $productos->links() }}
+  </div>
 </div>
 @endsection
