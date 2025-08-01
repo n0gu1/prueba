@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProductoRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class ProductoController extends Controller
 {
@@ -101,5 +102,14 @@ class ProductoController extends Controller
         return redirect()
             ->route('productos.index')
             ->with('success', 'Producto eliminado correctamente.');
+    }
+
+    public function exportPdf()
+    {
+        $productos = Producto::orderBy('id','desc')->get();
+        $pdf = PDF::loadView('productos.pdf', compact('productos'))
+                ->setPaper('a4', 'landscape');
+
+        return $pdf->download('productos_listado.pdf');
     }
 }
