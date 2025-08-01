@@ -4,7 +4,7 @@ Web que permite gestionar productos con CRUD, carga de imágenes, autenticación
 
 ---
 
-## 🚀 Características
+## Características
 
 - CRUD de productos (crear, ver, editar, eliminar)
 - Permite subir imagen con previsualización
@@ -15,7 +15,7 @@ Web que permite gestionar productos con CRUD, carga de imágenes, autenticación
 
 ---
 
-## ⚙️ Requisitos
+## Requisitos
 
 - PHP >= 8.1
 - Composer
@@ -25,7 +25,7 @@ Web que permite gestionar productos con CRUD, carga de imágenes, autenticación
 
 ---
 
-## 🛠️ Instalación
+## Instalación
 
 ### 1. Clonar el repositorio
 
@@ -89,7 +89,7 @@ Accede desde: [http://127.0.0.1:8000]
 
 ---
 
-## 🔐 Autenticación
+## Autenticación
 
 Se utilizó Laravel Breeze para la autenticación.
 
@@ -98,13 +98,13 @@ Se utilizó Laravel Breeze para la autenticación.
 
 ---
 
-## 📦 Exportar PDF
+## Exportar PDF
 
 En la vista de listado de productos hay un botón **"Descargar PDF"** que genera un archivo con todos los productos registrados usando `barryvdh/laravel-dompdf`.
 
 ---
 
-## 📷 Subida y previsualización de imagen
+## Subida y previsualización de imagen
 
 El formulario de productos permite subir una imagen y previsualizarla antes de guardar. Las imágenes se almacenan en `storage/app/public/productos`.
 
