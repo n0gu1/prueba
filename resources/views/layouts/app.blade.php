@@ -3,24 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title','Prueba')</title>
-  {{-- Si usas Vite: --}}
-  @if (file_exists(public_path('build/manifest.json')))
-    @vite(['resources/css/app.css','resources/js/app.js'])
-  @else
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script defer src="{{ asset('js/app.js') }}"></script>
-  @endif
+  <title>@yield('title','Mi Inventario')</title>
+
+  <!-- Bootstrap 5 CSS desde CDN (sin integrity por ahora) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
 </head>
 <body>
-  <nav>
-    {{-- tu navbar --}}
-  </nav>
+  @yield('content')
 
-  <main class="py-4">
-    @yield('content')
-  </main>
-
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   @stack('scripts')
 </body>
 </html>
