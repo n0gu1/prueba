@@ -11,3 +11,6 @@ Route::resource('productos', ProductoController::class);
 
 Route::get('productos-pdf', [ProductoController::class, 'exportPdf'])
      ->name('productos.pdf');
+
+Route::get('productos-pdf', [ProductoController::class, 'exportPdf'])
+     ->name('productos.pdf');
